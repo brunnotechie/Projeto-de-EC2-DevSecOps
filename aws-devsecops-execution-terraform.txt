@@ -1,0 +1,17 @@
+Para implementar este projeto:
+
+Configure suas credenciais AWS
+Ajuste as variáveis em um arquivo terraform.tfvars
+
+Execute:
+
+terraform init
+terraform plan
+terraform apply
+
+Após o provisionamento, você pode usar o AWS Systems Manager para executar o comando de instalação do agente:
+
+aws ssm send-command \
+    --document-name "devsecops-security-agent-install" \
+    --targets "Key=tag:Name,Values=devsecops-server-*" \
+    --comment "Installing security agent"
